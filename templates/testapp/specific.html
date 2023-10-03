@@ -1,0 +1,60 @@
+{% extends 'testapp/base.html'%}
+{% block nav_block%}
+<style>
+    body {
+        background-color: rgb(39, 131, 91);
+    }
+    table {
+        background-color: rgb(32, 171, 173);
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: rgba(51, 185, 178, 0.53);
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: rgb(60, 167, 171);
+    }
+    tr:nth-child(odd) {
+        background-color: rgb(200, 200, 200);
+    }
+    /* Create a class for round buttons */
+    .rounded-button {
+        border-radius: 50%;
+        padding: 5px 15px; /* Add padding for better appearance */
+    }
+</style>
+<div class="container">
+<h1 align="center"><strong>This Year Pass STUDENT With max Score</strong></h1>
+<hr>
+<table class="jumbotron" border="2" align="center">
+    <thead>
+        
+        <th>NAME</th>
+        <th>MARKS</th>
+        
+        <th>Action</th>
+    </thead>
+    <tr>
+        {% for student in student_list %}
+        
+        <td>{{ student.name }}</td>
+        <td>{{ student.marks }}</td>
+        
+        <td>
+            <a href="/update/{{student.id}}"><button class="btn-success rounded-button">Update</button></a>
+            <a href="/delete/{{student.id}}?page=specific"><button class="btn-danger rounded-button">Delete</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+   
+{% endblock %}

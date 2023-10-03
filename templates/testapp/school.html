@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html'%}
+{% load static %}
+{% block nav_block %}
+<link rel="stylesheet" href="{% static 'css/images' %}">
+<style>
+    .slideshow-container {
+        position: relative;
+        max-width: 100%;
+        height: auto; /* Remove fixed height */
+        margin: 0 auto;
+        overflow: hidden;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .mySlides {
+        display: none;
+        width: 50%; /* Display two slides side by side on larger screens */
+        float: left;
+    }
+
+    .mySlides img {
+        width: 100%;
+        height: 450px; /* Set a fixed height for all images */
+        object-fit: cover; /* Ensure the image covers the container */
+    }
+</style>
+
+<body>
+    <div class="slideshow-container">
+        
+        <div class="mySlides">
+            <img src="{% static 'images/s1.jpg' %}" alt="Slide 1">
+        </div><div class="mySlides">
+            <img src="{% static 'images/s2.jpg' %}" alt="Slide 1">
+        </div>
+        
+        <div class="mySlides">
+            <img src="{% static 'images/s3.jpg' %}" alt="Slide 3">
+        </div>
+        <div class="mySlides">
+            <img src="{% static 'images/s4.jpg' %}" alt="Slide 1">
+        </div>
+        <div class="mySlides">
+            <img src="{% static 'images/s5.jpg' %}" alt="Slide 1">
+        </div>
+        <div class="mySlides">
+            <img src="{% static 'images/s6.jpg' %}" alt="Slide 1">
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var slides = document.getElementsByClassName("mySlides");
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex += 2; // Display two slides at a time
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            for (var i = slideIndex - 2; i < slideIndex; i++) {
+                if (i >= 0 && i < slides.length) {
+                    slides[i].style.display = "block";
+                }
+            }
+            setTimeout(showSlides, 5000); // Change image every 5 seconds (adjust as needed)
+        }
+    </script>
+
+{% endblock %}

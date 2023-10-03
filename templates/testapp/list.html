@@ -1,0 +1,94 @@
+{% extends 'testapp/base.html'%}
+{% block nav_block%}
+<style>
+    body {
+        background-color: rgb(39, 131, 91);
+    }
+
+    table {
+        background-color: rgb(32, 171, 173);
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: rgba(51, 185, 178, 0.53);
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgb(60, 167, 171);
+    }
+
+    tr:nth-child(odd) {
+        background-color: rgb(200, 200, 200);
+    }
+
+    /* Create a class for round buttons */
+    .rounded-button {
+        border-radius: 50%;
+        padding: 5px 15px;
+        /* Add padding for better appearance */
+    }
+</style>
+<h1 align="center"><strong>ALL STUDENT LIST</strong></h1>
+<hr>
+
+<div class="d-flex  align-items-center pb-3 justify-content-between px-4">
+    <ul class="nav nav-pills bg-light">
+        <li class="nav-item">
+            <a class="nav-link {% if student_type == 'all'%} active {% endif %}" href="/list">All </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if student_type == 'first_class'%} active {% endif %}"
+                href="/list?student_type=first_class">First</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if student_type == 'second_class'%} active {% endif %}"
+                href="/list?student_type=second_class">Second</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if student_type == 'third_class'%} active {% endif %}"
+                href="/list?student_type=third_class">Third</a>
+        </li>
+
+    </ul>
+    <form action="/list">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" value="{{student_search}}">
+        <input type="hidden" name="student_type" value="{{student_type}}" id="">
+    </form>
+     <a href="/insert"><button type="button" class="btn btn-success btn-lg btn-block">Insert Student</button></a>
+
+</div>
+
+<table class="jumbotron" border="2" align="center">
+    <thead>
+        <th>ROLLNO</th>
+        <th>NAME</th>
+        <th>MARKS</th>
+        <th>EMAIL</th>
+        <th>ADDRESS</th>
+        <th>Action</th>
+    </thead>
+    <tr>
+        {% for student in student_list %}
+        <td>{{ student.rollno }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.marks }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.addr }}</td>
+        <td>
+            <a href="/update/{{student.id}}"><button class="btn-success rounded-button">Update</button></a>
+            <a href="/delete/{{student.id}}"><button class="btn-danger rounded-button">Delete</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
