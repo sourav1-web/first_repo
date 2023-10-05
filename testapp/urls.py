@@ -18,9 +18,16 @@ from django.contrib import admin
 from django.urls import path,include
 from testapp import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('testapp.urls')),
- 
+    
+    path('',views.SchoolView),
+    path('home/',views.RetrieveView),
+    path('pass/',views.StudentPassView),
+    path('list/',views.StudentView),
+    path('logout/',views.LogoutView),
+    path('signin/',views.SigninView),
+    path('delete/<int:id>',views.DeleteView),
+    path('update/<int:id>',views.UpdateView),
+    path('insert/',views.InsertView),
+    path('specific/',views.SpecificColumn),
    
 ]

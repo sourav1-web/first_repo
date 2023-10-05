@@ -52,6 +52,9 @@ def LogoutView(request):
     return render(request,'testapp/logout.html')
 
 def SigninView(request):
+    if request.user.is_authenticated:
+        return redirect('/list')
+
     form=SignupForm()
     if request.method =='POST':
         form=SignupForm(request.POST)
