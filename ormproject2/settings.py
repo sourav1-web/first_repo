@@ -24,14 +24,15 @@ STATIC_DIR=BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-27@4u%s9@#&nntsw0$s+7!!ta#_19t&cg!u7&+vzfx(+f6j$og'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['sourav1.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_material.apps.AdminMaterialDashboardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

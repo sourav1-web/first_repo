@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Student(models.Model):
@@ -7,3 +8,6 @@ class Student(models.Model):
     marks=models.FloatField()
     email=models.EmailField()
     addr=models.CharField(max_length=64)
+
+
+
